@@ -1,6 +1,6 @@
 class Book {
     constructor(title, author, genre) {
-        this.id = Date.now(); // Генеруємо унікальний ID
+        this.id = id; // Унікальний ідентифікатор
         this.title = title;
         this.author = author;
         this.genre = genre;
@@ -13,10 +13,6 @@ class Book {
         this.isRead = true;
     }
 
-    // Метод для добавления отзыва
-    addReview(review) {
-        this.reviews.push(review);
-    }
 }
 
 module.exports = Book;

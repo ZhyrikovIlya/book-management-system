@@ -1,28 +1,25 @@
-const Book = require('./models/Book');
+const { getBooks, markAsRead, addReview } = require('./controllers/bookController');
 
-function main() {
+async function main() {
     console.log('Book Management System');
 
-    // Створюємо книги
-    const book1 = new Book('The Hobbit', 'J.R.R. Tolkien', 'Fantasy');
-    const book2 = new Book('1984', 'George Orwell', 'Dystopian');
-    const book3 = new Book('The Silmarillion', 'J.R.R. Tolkien', 'Fantasy');
-
-    // Список книг
-    const books = [book1, book2, book3];
-    console.log('Added books:', books);
+    // Отримання всіх книг з books.json
+    const books = await getBooks();
+    console.log('Books loaded from database:', books);
 
     // Позначка книги як прочитаної
-    book1.markAsRead();
-    console.log('Marked as read:', book1);
+    const bookToMark = books.find((book) => book.title === 'The Hobbit');
+    if (bookToMark) {
+        const updatedBook = await markAsRead(bookToMark.id);
+        console.log('Marked as read:', updatedBook);
+    }
 
-    // Додавання відгуків
-    book1.addReview('A fantastic journey through Middle-earth!');
-    book2.addReview('A chilling dystopian novel.');
-    book3.addReview('A deep dive into the history of Middle-earth.');
-
-    console.log('Books with reviews:');
-    books.forEach((book) => console.log(book));
+    // Додавання відгуку
+    const bookToReview = books.find((book) => book.title === '1984');
+    if (bookToReview) {
+        const reviewedBook = await addReview(bookToReview.id, 'A chilling dystopian novel.');
+        console.log('Added review:', reviewedBook);
+    }
 
     // Фільтрування за жанром
     const fantasyBooks = books.filter((book) => book.genre === 'Fantasy');
@@ -38,4 +35,4 @@ function main() {
     console.log(`Search result for title "${searchTitle}":`, foundBook || 'Not found');
 }
 
-main();
+main().catch((err) => console.error(err));
