@@ -5,5 +5,37 @@
     "author": "J.R.R. Tolkien",
     "genre": "Fantasy",
     "isRead": true
+  },
+  {
+    "id": 1735329266312,
+    "title": "The Hobbit",
+    "author": "J.R.R. Tolkien",
+    "genre": "Fantasy",
+    "isRead": true,
+    "reviews": []
+  },
+  {
+    "id": 1735329266312,
+    "title": "1984",
+    "author": "George Orwell",
+    "genre": "Dystopian",
+    "isRead": false,
+    "reviews": []
+  },
+  {
+    "id": 1735330824602,
+    "title": 1735330824602,
+    "author": "The Hobbit",
+    "genre": "J.R.R. Tolkien",
+    "isRead": true,
+    "reviews": []
+  },
+  {
+    "id": 1735330824603,
+    "title": 1735330824603,
+    "author": "1984",
+    "genre": "George Orwell",
+    "isRead": false,
+    "reviews": []
   }
 ]
