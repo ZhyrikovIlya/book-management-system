@@ -2,6 +2,16 @@ const { readData, writeData } = require("../utils/fileHandler");
 const Book = require("../models/Book");
 
 async function addBook(title, author, genre) {
+    if (!title || typeof title !== 'string' || title.trim() === '') {
+        throw new Error("Invalid input: 'title' is required and must be a non-empty string.");
+    }
+    if (!author || typeof author !== 'string' || author.trim() === '') {
+        throw new Error("Invalid input: 'author' is required and must be a non-empty string.");
+    }
+    if (!genre || typeof genre !== 'string' || genre.trim() === '') {
+        throw new Error("Invalid input: 'genre' is required and must be a non-empty string.");
+    }
+
     const books = await readData();
     const newId = books.length ? Math.max(...books.map((book) => book.id)) + 1 : 1;
     const newBook = new Book(newId, title, author, genre);
@@ -26,13 +36,14 @@ async function getBooks() {
 }
 
 async function addReview(bookId, review) {
+    if (!review || typeof review !== 'string' || review.trim() === '') {
+        throw new Error("Invalid input: 'review' is required and must be a non-empty string.");
+    }
+
     const books = await readData();
     const book = books.find(b => b.id === bookId);
     if (!book) {
-        throw new Error("Book not found");
-    }
-    if (!book.reviews) {
-        book.reviews = [];
+        throw new Error("Book not found.");
     }
     book.reviews.push(review);
     await writeData(books);
