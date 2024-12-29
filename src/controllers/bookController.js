@@ -3,7 +3,8 @@ const Book = require("../models/Book");
 
 async function addBook(title, author, genre) {
     const books = await readData();
-    const newBook = new Book(Date.now(), title, author, genre);
+    const newId = books.length ? Math.max(...books.map((book) => book.id)) + 1 : 1;
+    const newBook = new Book(newId, title, author, genre);
     books.push(newBook);
     await writeData(books);
     return newBook;
@@ -38,4 +39,26 @@ async function addReview(bookId, review) {
     return book;
 }
 
-module.exports = { addBook, markAsRead, getBooks, addReview };
+async function updateBook(id, updatedFields) {
+    const books = await readData();
+    const bookIndex = books.findIndex((book) => book.id === id);
+    if (bookIndex === -1) {
+        throw new Error(`Book with ID ${id} not found`);
+    }
+    books[bookIndex] = { ...books[bookIndex], ...updatedFields };
+    await writeData(books);
+    return books[bookIndex];
+}
+
+async function deleteBook(id) {
+    const books = await readData();
+    const updatedBooks = books.filter((book) => book.id !== id);
+    if (books.length === updatedBooks.length) {
+        throw new Error(`Book with ID ${id} not found`);
+    }
+    await writeData(updatedBooks);
+    return id;
+}
+
+
+module.exports = { addBook, markAsRead, getBooks, addReview, updateBook, deleteBook };
