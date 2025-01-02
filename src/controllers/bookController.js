@@ -1,5 +1,6 @@
-const { readData, writeData } = require("../utils/fileHandler");
+const { readData, writeData, readLastId, updateLastId } = require("../utils/fileHandler");
 const Book = require("../models/Book");
+
 
 async function addBook(title, author, genre) {
     if (!title || typeof title !== 'string' || title.trim() === '') {
@@ -13,10 +14,15 @@ async function addBook(title, author, genre) {
     }
 
     const books = await readData();
-    const newId = books.length ? Math.max(...books.map((book) => book.id)) + 1 : 1;
+    const lastId = await readLastId(); // Зчитування останнього ID
+    const newId = lastId + 1;
+
     const newBook = new Book(newId, title, author, genre);
     books.push(newBook);
+
     await writeData(books);
+    await updateLastId(newId); // Оновлення останнього ID
+
     return newBook;
 }
 

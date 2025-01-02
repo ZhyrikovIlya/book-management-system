@@ -1,6 +1,32 @@
 [
   {
+    "id": 1,
+    "title": "The Silmarillion",
+    "author": "J.R.R. Tolkien",
+    "genre": "Fantasy",
+    "isRead": false,
+    "reviews": [
+      "Great book!"
+    ]
+  },
+  {
     "id": 2,
+    "title": "Dune",
+    "author": "Frank Herbert",
+    "genre": "Science Fiction",
+    "isRead": false,
+    "reviews": []
+  },
+  {
+    "id": 3,
+    "title": "Brave New World",
+    "author": "Aldous Huxley",
+    "genre": "Dystopian",
+    "isRead": false,
+    "reviews": []
+  },
+  {
+    "id": 4,
     "title": "1984",
     "author": "George Orwell",
     "genre": "Dystopian",
@@ -9,37 +35,5 @@
       "A chilling dystopian novel.",
       "Great book!"
     ]
-  },
-  {
-    "id": 3,
-    "title": "The Silmarillion",
-    "author": "J.R.R. Tolkien",
-    "genre": "Fantasy",
-    "isRead": false,
-    "reviews": []
-  },
-  {
-    "id": 4,
-    "title": "Dune",
-    "author": "Frank Herbert",
-    "genre": "Science Fiction",
-    "isRead": false,
-    "reviews": []
-  },
-  {
-    "id": 5,
-    "title": "Brave New World",
-    "author": "Aldous Huxley",
-    "genre": "Dystopian",
-    "isRead": false,
-    "reviews": []
-  },
-  {
-    "id": 6,
-    "title": "Test Book",
-    "author": "Test Author",
-    "genre": "Test Genre",
-    "isRead": false,
-    "reviews": []
   }
 ]
