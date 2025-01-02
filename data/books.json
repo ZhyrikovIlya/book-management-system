@@ -1,5 +1,14 @@
 [
   {
+    "id": 1,
+    "title": "The Silmarillion",
+    "author": "J.R.R. Tolkien",
+    "genre": "Fantasy",
+    "isRead": false,
+    "reviews": [
+      "Great book!"
+    ]
+  },
     "id": 2,
     "title": "Dune",
     "author": "Frank Herbert",
@@ -27,13 +36,5 @@
       "A chilling dystopian novel.",
       "Great book!"
     ]
-  },
-  {
-    "id": 6,
-    "title": "Test Book",
-    "author": "Test Author",
-    "genre": "Test Genre",
-    "isRead": false,
-    "reviews": []
   }
 ]
