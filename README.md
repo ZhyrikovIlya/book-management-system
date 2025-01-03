@@ -129,3 +129,75 @@ book-management-system/
 ### Автор
 
 Зробив **Жиріков Ілля Ігорович ІС-23** у рамках навчальної дисципліни **Розробка програмного забезпечення на платформі Nоdе.JS**.
+
+---
+
+ЛР2
+- Створив пакет
+  ```
+  npm init -y
+- Встановив необхідні залежності
+  ```
+  npm install --save-dev eslint prettier husky lint-staged jest
+- Вибрав стиль коду
+Використовував Prettier для форматування та ESLint для перевірки стилю.
+Додав файл .prettierrc
+  ```
+  {
+  "semi": true,
+  "singleQuote": true,
+  "trailingComma": "es5"
+  }
+- Налаштувати форматтер
+Додайв скрипт для Prettier у package.json:
+  ```
+  "scripts": {
+  "format": "prettier --write ."
+  }
+Запустив команду для перевірки форматування
+    ```
+    npm run format
+Успішно
+- Налаштував лінтер
+Ініціалізував ESLint:
+  ```
+   npx eslint --init
+Інтегрував Prettier з ESLint:
+  ```
+npm install --save-dev eslint-config-prettier eslint-plugin-prettier
+```
+Оновив .eslintrc.json:
+   ```
+{
+  "extends": ["eslint:recommended", "plugin:prettier/recommended"],
+  "rules": {
+    "prettier/prettier": "error"
+  }
+}
+```
+Налаштував Git-хуки
+Встановив необхідних пакетів
+Виконав команди:
+  ```
+npm install --save-dev husky lint-staged
+```
+2. Ініціалізав Husky
+  ```
+npx husky install
+```
+Додав у файл package.json
+   ```
+"scripts": {
+  "prepare": "husky install"
+}
+```
+Створив у директорії .git/hooks файли **pre-commit** та **pre-push**
+Для pre-commit:
+  ```
+npx husky add .husky/pre-commit "npx lint-staged"
+```
+Для pre-push:
+   ```
+npx husky add .husky/pre-push "npm test"
+```
+Все  закомітив під назвою Test commithooks
