@@ -200,4 +200,8 @@ npx husky add .husky/pre-commit "npx lint-staged"
    ```
 npx husky add .husky/pre-push "npm test"
 ```
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8aa04d983d0d7ac24d39f00d6b5be578f0174cca
 Все  закомітив під назвою Test commithooks
