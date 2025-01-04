@@ -63,6 +63,7 @@ async function addReview(bookId, review) {
 
 async function updateBook(id, updatedFields) {
   const books = await readData();
+  console.log('Books:', books, 'Updating ID:', id); // Додано логування
   const bookIndex = books.findIndex((book) => book.id === id);
   if (bookIndex === -1) {
     throw new Error(`Book with ID ${id} not found`);
